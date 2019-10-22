@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="personForm" type="com.reinaldo.tests.strutsexample.common.form.PersonForm"/>
+		<form-bean name="listPersonForm" type="com.reinaldo.tests.strutsexample.common.form.ListForm"/>
+	</form-beans>
+
+	<action-mappings>
+	
+		<action path="/crud" type="com.reinaldo.tests.strutsexample.common.action.MenuAction">
+			<forward name="home" path="/menu.jsp"/>
+		</action>
+		
+		
+		<action path="/read" type="com.reinaldo.tests.strutsexample.common.action.ReadAction"
+			name="listPersonForm" scope="request">
+			<forward name="read1" path="/crud/read1.jsp"/>
+		</action>
+	
+		<action path="/create" type="com.reinaldo.tests.strutsexample.common.action.CreateAction"
+			name="personForm" input="/crud/create1.jsp" scope="request" >
+			<forward name="create1" path="/crud/create1.jsp"/>
+			<forward name="create2" path="/crud/create2.jsp"/>
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="ApplicationResources" null="false" />
+
+</struts-config>
